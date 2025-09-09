@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>padis design resources</title>
+  
+
+  <!-- Custom Styles -->
+  <style>
+    body {
+    font-size: 15pt;
+    margin: 0;
+    background: black;
+}
+#adsbar{
+    width: 100%;
+    height: auto;
+    background: transparent;
+    position: relative;
+    overflow: auto;
+    color: red;
+    margin-top: 5px;
+}
+#app{
+    width: 100%;
+    height: 100vh;
+    background: black;
+    position: absolute;
+    top: 0vh;
+}
+#container{
+    width: 100%;
+    height: 85vh;
+    background: black;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+#keys{
+    width: 100%;
+    height: 7vh;
+}
+#downloadbtn,
+#savebtn{
+    width: 10%;
+    border: 2px solid transparent;
+    background-color: green;
+    height: 6.4vh;
+    background-size: 30px;
+    border-radius: 50px;
+    margin-left: 90px;
+}
+#downloadbtn{
+    background-image: url("arrow-big-up.png");
+}
+#savebtn{
+    background-image: url("store-alt-2.png");
+}
+#downloadbtn::after{
+    contain: "";
+    width: 10%;
+    background: red;
+    height: 2vh;
+}
+.non-active{
+    display: none;
+}
+#resources{
+    width: 100%;
+    height: 85vh;
+    background: black;
+    overflow: auto;
+}
+#downloaded{
+    width: 100%;
+    height: 78vh;
+    background: green;
+}
+#savebtn:hover,
+#downloadbtn:hover{
+    color: red;
+    background-color: red;
+}
+#resourcebox{
+  width: 100%;
+  height: 50vh;
+  border-radius: 20px;
+  background: grey;
+  margin-left: 0px;
+  margin-top: 30px;
+}
+#resourceimg{
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    height: 40vh;
+}
+.resourcebtn{
+    width: 100%;
+    border: 1px solid transparent;
+    height: 10vh;
+    border-radius: 0 0 20px 20px;
+    color: blue;
+    font-size: 25px;
+    font-weight: 1000;
+}
+#contain{
+    width: 100%;
+    height: 55vh;
+    background: black;
+    border-radius: 0 0 20px 20px;
+}
+#imagebox{
+    width: 100%;
+    height: 42vh;
+    background: blue;
+}
+.image{
+    width: 100%;
+    height: 42vh;
+}
+#imagename{
+    width: 100%;
+    height: 3vh;
+    color: white;
+    font-size: 13px;
+    color: red;
+}
+.upload,
+.download{
+    border: 2px solid black;
+    width: 100%;
+    border-radius: 0 0 0px 0px;
+    height: 10vh;
+}
+.download{
+    border-radius: 0 0 20px 20px;
+}
+#whatsapp{
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50px;
+    background-image: url("/20250905_223917.png");
+    top: 60vh;
+    background-size: cover;
+    left: 67%;
+}
+#scrolldown{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    background-image: url("/20250907_191443.png");
+    top: 45vh;
+    background-size: cover;
+    left: 75%;
+    background-color: black;
+    border: 2px solid transparent;
+}
+#intro{
+    width: 98%;
+    height: auto;
+    background: blue;
+    border: 2px solid green;
+    border-radius: 20px;
+    justify-content: center;
+    display: flex;
+    margin-top: 5px;
+}
+#info{
+    text-align: center;
+    font-size: 18px;
+    color: red;
+}
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="container">
+      <a href="https://chat.whatsapp.com/Jxqo5eNGYdq6FkBaju6KEr?mode=ems_copy_c"><img id="whatsapp" src="/20250908_115423.jpg"></img></a>
+      <button id="scrolldown"></button>
+      <div id="resources">
+        <div id="adsbar">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9263272723933629"
+     crossorigin="anonymous"></script>
+<!-- Banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9263272723933629"
+     data-ad-slot="4325335653"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+  <div id="intro">
+    <b id="info">Get free resources here on padis designer resources - PDR</b>
+  </div>
+      </div>
+      <div id="downloaded" class="non-active"></div>
+    </div>
+    <div id="keys" class="non-active">
+      <button id="downloadbtn"></button>
+      <button id="savebtn"><button>
+    </div>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
+    import { getDatabase,ref,onChildAdded } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+    
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyAuuOf5xy0xnVcY_XFY8mDQMtGWHeSkCxM",
+      authDomain: "design-resources-19ccb.firebaseapp.com",
+      databaseURL: "https://design-resources-19ccb-default-rtdb.firebaseio.com",
+      projectId: "design-resources-19ccb",
+      storageBucket: "design-resources-19ccb.appspot.com",
+      messagingSenderId: "894710579547",
+      appId: "1:894710579547:web:7f421867654504f031da7e",
+      measurementId: "G-BCTQ0YDRCK"
+    };
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getDatabase(app);
+    const chatRef = ref(db, 'messages')
+    let resources = document.getElementById("resources");
+    
+    onChildAdded(chatRef,(system)=>{
+      let {image,name} = system.val();
+      let contain = document.createElement("div");
+      contain.setAttribute("id","contain");
+      let imagebox = document.createElement("div");
+      let img = document.createElement("img");
+      img.classList.add("image")
+      img.src = image;
+      imagebox.appendChild(img);
+      imagebox.setAttribute("id","imagebox")
+      let imagename = document.createElement("div");
+      imagename.setAttribute("id","imagename");
+      imagename.textContent = name;
+      let button = document.createElement("button");
+      button.textContent = "Download ";
+      button.classList.add("download");
+      let anchor = document.createElement("a");
+      anchor.href = name;
+      anchor.download = name;
+      anchor.appendChild(button);
+      contain.appendChild(imagebox);
+      contain.appendChild(imagename);
+      contain.appendChild(anchor);
+      resources.appendChild(contain);
+    })
+  </script>
+</body>
+</html>
